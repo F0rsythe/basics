@@ -1,5 +1,5 @@
 const fs = require("fs")
-fs.readFile('./content/result-sync.txt', "utf8",(err, result) => {
+fs.readFile('./content/first.txt', "utf8",(err, result) => {
     if(err){
         console.log(err)
         return;
@@ -11,7 +11,20 @@ fs.readFile('./content/result-sync.txt', "utf8",(err, result) => {
             console.log(err)
         }
         const second = result
+            fs.writeFile(
+              './content/result-async.txt',
+              `Here is the result : ${first}, ${second}`,
+              (err, result) => {
+                if (err) {
+                  console.log(err)
+                  return
+                }
+
+                console.log(result)
+              }
+            )
     })
+
   }
 )
 console.log("Done")
