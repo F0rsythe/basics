@@ -1,3 +1,4 @@
+// Asyncronous runs task, then ofloads big task then moves to next task
 const fs = require("fs")
 fs.readFile('./content/first.txt', "utf8",(err, result) => {
     if(err){
